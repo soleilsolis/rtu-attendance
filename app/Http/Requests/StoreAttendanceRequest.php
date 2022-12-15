@@ -2,7 +2,12 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Attendance;
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+
+use App\Http\Controllers\AttendanceController;
 
 class StoreAttendanceRequest extends FormRequest
 {
@@ -12,8 +17,8 @@ class StoreAttendanceRequest extends FormRequest
      * @return bool
      */
     public function authorize()
-    {
-        return false;
+    {   
+        return AttendanceController::enabled();
     }
 
     /**
@@ -24,7 +29,7 @@ class StoreAttendanceRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+           
         ];
     }
 }

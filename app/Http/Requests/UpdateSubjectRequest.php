@@ -2,18 +2,19 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
+
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateSubjectRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
+
     public function authorize()
     {
-        return false;
+        $user = User::find(Auth::id());
+
+        return $user->type === 'admin';
     }
 
     /**
@@ -24,7 +25,8 @@ class UpdateSubjectRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id' => 'required|numeric',
+            'name' => 'required|max:1000'
         ];
     }
 }

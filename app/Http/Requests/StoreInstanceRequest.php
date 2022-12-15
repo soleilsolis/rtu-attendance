@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
+
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreInstanceRequest extends FormRequest
 {
@@ -13,7 +16,9 @@ class StoreInstanceRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        $user = User::find(Auth::id());
+
+        return $user->type === 'admin';
     }
 
     /**
@@ -24,7 +29,9 @@ class StoreInstanceRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'user_id' => 'required|numeric',
+            'subject_id' => 'required|numeric',
+            'active' => 'required|numeric|min:0|max:1',
         ];
     }
 }

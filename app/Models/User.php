@@ -21,6 +21,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'first_name',
+        'last_name',
+        'address',
+        'section_id',
+        'middle_name'
     ];
 
     /**
@@ -41,13 +46,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
-    public function section()
-    {
-        return $this->belongsTo(Section::class);
-    }
 
-    public function instances()
+    public function section()
     {
         return $this->belongsTo(Section::class);
     }

@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
+
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateSectionRequest extends FormRequest
 {
@@ -13,8 +16,11 @@ class UpdateSectionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        $user = User::find(Auth::id());
+
+        return $user->type === 'admin';
     }
+
 
     /**
      * Get the validation rules that apply to the request.
@@ -24,7 +30,9 @@ class UpdateSectionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id' => 'required|numeric',
+            'name' => 'required:max:255',
+            'course_id' => 'required|numeric'
         ];
     }
 }

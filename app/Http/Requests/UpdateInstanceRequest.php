@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
+
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateInstanceRequest extends FormRequest
 {
@@ -13,7 +16,9 @@ class UpdateInstanceRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        $user = User::find(Auth::id());
+
+        return $user->type === 'admin';
     }
 
     /**
@@ -24,7 +29,10 @@ class UpdateInstanceRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id' => 'required|numeric',
+            'user_id' => 'required|numeric',
+            'subject_id' => 'required|numeric',
+            'active' => 'required|numeric|min:0|max:1',
         ];
     }
 }

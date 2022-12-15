@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Section;
 use App\Http\Requests\StoreSectionRequest;
 use App\Http\Requests\UpdateSectionRequest;
+use Illuminate\Http\Request;
 
 class SectionController extends Controller
 {
@@ -15,7 +16,7 @@ class SectionController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Section::all());
     }
 
     /**
@@ -36,7 +37,12 @@ class SectionController extends Controller
      */
     public function store(StoreSectionRequest $request)
     {
-        //
+        $section = Section::create([
+            'name' => $request->name,
+            'course_id' => $request->name,
+        ]);
+
+        return response()->json($section);
     }
 
     /**
@@ -45,9 +51,11 @@ class SectionController extends Controller
      * @param  \App\Models\Section  $section
      * @return \Illuminate\Http\Response
      */
-    public function show(Section $section)
+    public function show(Section $section, Request $request)
     {
-        //
+        $section = $section->find($request->id);
+
+        return response()->json($section); 
     }
 
     /**
@@ -70,7 +78,13 @@ class SectionController extends Controller
      */
     public function update(UpdateSectionRequest $request, Section $section)
     {
-        //
+        $section = Section::find($request->id);
+
+        $section->name = $request->name;
+        $section->course_id = $request->course_id;
+        $section->save();
+
+        return response()->json($section);
     }
 
     /**

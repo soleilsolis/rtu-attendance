@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Attendance;
 use App\Http\Requests\StoreAttendanceRequest;
 use App\Http\Requests\UpdateAttendanceRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+
+use Illuminate\Database\Eloquent\Builder;
+use Carbon\Carbon;
 
 class AttendanceController extends Controller
 {
@@ -13,11 +18,54 @@ class AttendanceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public static function enabled()
     {
-        //
+        $now = now()->startOfDay();
+        $attendance = Attendance::where('created_at', '>=', now()->startOfDay())
+                ->where('created_at', '<=', now()->startOfDay()->addDays(1))
+                ->where('user_id', '=', Auth::id())
+                ->first();
+
+        $schedule = Auth::user()->section->schedules->where('day', '=', $now->dayOfWeek)->first();
+
+        return ! $attendance && $schedule;
+
     }
 
+
+    public function index(Request $request)
+    {   
+        $created_at = $request->created_at;
+        $section_id = $request->section_id;
+
+        if (Auth::user()->type == 'admin') {
+            $attendances = new Attendance();
+
+            if ($created_at) {
+                $date = Carbon::parse($request->created_at);
+
+           
+                $attendances = $attendances->where('created_at', '>=', $created_at)
+                ->where('created_at', '<=', $date->addDays(1)->format("Y-m-d"));
+            }
+
+            if ($section_id) {
+                $attendances = $attendances->whereHas('user', function (Builder $query) use ($section_id) {
+                    $query->where('section_id', '=', $section_id);
+                });
+            }
+
+            $attendances = $attendances->get(); 
+        } 
+
+        if (Auth::user()->type == 'student') {
+            $attendances = Auth::user()->attendances->sortByDesc('id');
+        }
+        
+    
+        return view('attendance', compact('attendances', 'created_at', 'section_id'));
+    }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -36,7 +84,11 @@ class AttendanceController extends Controller
      */
     public function store(StoreAttendanceRequest $request)
     {
-        //
+        $attendance = Attendance::create([
+            'user_id' => Auth::id()
+        ]);
+
+        return $attendance;
     }
 
     /**

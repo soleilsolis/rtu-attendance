@@ -19,7 +19,8 @@ return new class extends Migration
             $table->unsignedBigInteger('section_id');
             $table->foreign('instance_id')->references('id')->on('instances');
             $table->foreign('section_id')->references('id')->on('sections');
-            $table->time('time');
+            $table->time('start_time');
+            $table->time('end_time');
             $table->smallInteger('day');
             $table->timestamps();
         });

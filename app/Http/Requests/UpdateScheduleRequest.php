@@ -24,7 +24,12 @@ class UpdateScheduleRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id' => 'required|numeric',
+            'instance_id' => 'required|numeric',
+            'section_id' => 'required|numeric',
+            'day' => 'required|numeric|min:1|max:7',
+            'start_time' => 'required|date_format:H:i',
+            'end_time' => 'required|date_format:H:i|after_or_equal:start_time',
         ];
     }
 }

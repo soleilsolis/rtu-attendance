@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('last_name');
             $table->text('address');
             $table->unsignedBigInteger('section_id');
-            $table->foreign('section_id')->references('id')->on('section');
+            $table->foreign('section_id')->references('id')->on('sections');
             $table->enum('type', ['student', 'admin', 'professor']);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

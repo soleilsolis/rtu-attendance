@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('subject_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('subject_id')->references('id')->on('subjects');
+            $table->smallInteger('active');
             $table->timestamps();
         });
     }
