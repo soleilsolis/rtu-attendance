@@ -71,6 +71,9 @@
 
     <div class="item mt-auto">
 
+        <div class="text-center font-bold text-lg my-5">
+            {{ Auth::user()->last_name }}, {{ Auth::user()->first_name }}
+        </div>
         <div class="flex items-center">
             <div class="mx-auto">
                 <form class="inline mx-2" action="/logout" method="POST">

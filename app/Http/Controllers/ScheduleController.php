@@ -116,8 +116,14 @@ class ScheduleController extends Controller
      * @param  \App\Models\Schedule  $schedule
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Schedule $schedule)
+    public function destroy(Schedule $schedule, Request $request)
     {
-        //
+        $schedule = Schedule::find($request->id);
+
+        $schedule->delete();
+
+        return response()->json([
+            'deleted' => 1
+        ]);
     }
 }

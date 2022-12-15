@@ -72,6 +72,7 @@ Route::middleware('auth.session')->group(function(){
         Route::get('/schedule/{id}', 'show');
         Route::post('/schedules', 'store');
         Route::post('/schedule/update', 'update');
+        Route::delete('/schedule/delete/{id}', 'destroy');
     });
 
     Route::controller(UserController::class)->group(function(){

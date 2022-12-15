@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Courses')
+@section('title', 'Subjects')
 
 @section('main')
     <div class="ui secondary menu">

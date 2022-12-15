@@ -13,7 +13,7 @@ class StoreScheduleRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -27,8 +27,8 @@ class StoreScheduleRequest extends FormRequest
             'instance_id' => 'required|numeric',
             'section_id' => 'required|numeric',
             'day' => 'required|numeric|min:1|max:7',
-            'start_time' => 'required|date_format:H:i',
-            'end_time' => 'required|date_format:H:i|after_or_equal:start_time',
+            'start_time' => 'required',
+            'end_time' => 'required|after_or_equal:start_time',
         ];
     }
 }

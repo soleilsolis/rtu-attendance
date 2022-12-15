@@ -40,7 +40,7 @@
     <div id="attendance-modal" class="ui basic small modal">
         <div class="bg-white shadow-md p-6 rounded-md overflow-auto">
             <h1 id="attendance-label" class="mb-10 text-black text-3xl font-bold">New Instance</h1>
-            <form class="ui large form submit-form" data-method="POST" data-action="/instances" data-callback="reload">
+            <form class="ui large form submit-form" data-method="POST" data-action="/schedules" data-callback="reload">
                 @csrf
 
 
