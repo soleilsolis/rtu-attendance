@@ -22,13 +22,15 @@
     </a>
 
 
+
+    @if (Auth::user()->type === 'admin')
+
+    
     <a href="/attendance" class="item m-3">
         <span class="text-2xl ">
             Attendance
         </span>
     </a>
-
-    @if (Auth::user()->type === 'admin')
         <a href="/courses" class="item m-3">
             <span class="text-2xl ">
                 Courses
