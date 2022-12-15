@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Courses')
+@section('title', 'Schedules')
 
 @section('main')
     <div class="ui secondary menu">
@@ -16,7 +16,11 @@
     <table class="ui selectable stackable table">
         <thead>
             <th class="collapsing">#</th>
-            <th>Name</th>
+            <th>Instance</th>
+            <th>Section</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Day</th>
             <th class="right aligned">Date</th>
         </thead>
 
@@ -38,7 +42,17 @@
             <form class="ui large form submit-form" data-method="POST" data-action="/schedules" data-callback="reload">
                 @csrf
 
+                <x-field label="Instance" type="dropdown" name="user_id" id="user_id">
+                    @foreach (\App\Models\Instance::all() as $instance)
+                        <option value="{{ $user->id }}">{{ $user->last_name }}, {{ $user->first_name }}</option>
+                    @endforeach
+                </x-field>
 
+                <x-field label="Professor" type="dropdown" name="user_id" id="user_id">
+                    @foreach (\App\Models\User::where('type', '=', 'professor')->get() as $user)
+                        <option value="{{ $user->id }}">{{ $user->last_name }}, {{ $user->first_name }}</option>
+                    @endforeach
+                </x-field>
                 <x-field id="name" name="name" type="text" label="Name"></x-field>
 
                 <button class="ui big blue button mt-12" type="submit">Save</button>
