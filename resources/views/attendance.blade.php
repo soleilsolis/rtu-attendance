@@ -22,6 +22,7 @@
             @foreach ($attendances as $attendance)
                 <tr>
                     <td>{{ $attendance->id }}</td>
+                    <td>{{ $attendance->user->last_name }}, {{ $attendance->user->first_name }}</td>
                     <td class="right aligned">{{ $attendance->created_at }}</td>
                 </tr>
             @endforeach
