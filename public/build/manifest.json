@@ -1,0 +1,36 @@
+{
+  "resources/image/AJ2.png": {
+    "file": "assets/AJ2.cdfdec40.png",
+    "src": "resources/image/AJ2.png"
+  },
+  "resources/image/room.svg": {
+    "file": "assets/room.17ba7308.svg",
+    "src": "resources/image/room.svg"
+  },
+  "resources/image/bg.svg": {
+    "file": "assets/bg.49f6daea.svg",
+    "src": "resources/image/bg.svg"
+  },
+  "resources/image/users.svg": {
+    "file": "assets/users.027bfe66.svg",
+    "src": "resources/image/users.svg"
+  },
+  "resources/image/stack.svg": {
+    "file": "assets/stack.7ba53b40.svg",
+    "src": "resources/image/stack.svg"
+  },
+  "resources/image/ce.png": {
+    "file": "assets/ce.2c4f3134.png",
+    "src": "resources/image/ce.png"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app.f0822820.js",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/css/app.css": {
+    "file": "assets/app.dc512ead.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  }
+}
