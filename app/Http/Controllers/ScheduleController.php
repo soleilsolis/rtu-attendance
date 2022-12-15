@@ -15,8 +15,9 @@ class ScheduleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return response()->json(Schedule::all());
+    {   
+        $schedules = Schedule::all();
+        return view('schedules', compact('schedules'));
     }
 
     /**
@@ -58,7 +59,7 @@ class ScheduleController extends Controller
     {
         $schedule = $schedule->find($request->id);
 
-        return response()->json($schedule); 
+        return view('schedule', compact('schedule'));
     }
 
     /**

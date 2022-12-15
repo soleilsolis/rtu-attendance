@@ -16,7 +16,9 @@ class SectionController extends Controller
      */
     public function index()
     {
-        return response()->json(Section::all());
+        $sections = Section::all();
+
+        return view('sections', compact('sections'));
     }
 
     /**
@@ -39,7 +41,7 @@ class SectionController extends Controller
     {
         $section = Section::create([
             'name' => $request->name,
-            'course_id' => $request->name,
+            'course_id' => $request->course_id,
         ]);
 
         return response()->json($section);
@@ -55,7 +57,7 @@ class SectionController extends Controller
     {
         $section = $section->find($request->id);
 
-        return response()->json($section); 
+        return view('section', compact('section'));
     }
 
     /**

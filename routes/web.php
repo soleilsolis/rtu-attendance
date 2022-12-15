@@ -5,7 +5,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\SectionController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\InstanceController;
+use App\Http\Controllers\ScheduleController;
 use App\Models\User;
 
 /*
@@ -58,18 +61,30 @@ Route::middleware('auth')->group(function(){
     
     Route::get('/attendance', [AttendanceController::class, 'index']);
 
-    Route::get('/courses', [CourseController::class, 'index']);
     
     Route::get('/schedule', function () {
         return view('welcome');
     });
 
     Route::get('/user/{id}',[UserController::class, 'show']);
+    Route::get('/course/{id}',[CourseController::class, 'show']);
+    Route::get('/section/{id}',[SectionController::class, 'show']);
+    Route::get('/subject/{id}',[SubjectController::class, 'show']);
+    Route::get('/instance/{id}',[InstanceController::class, 'show']);
+    Route::get('/schedule/{id}',[ScheduleController::class, 'show']);
+    
+    Route::get('/courses',[CourseController::class, 'index']);
+    Route::get('/sections',[SectionController::class, 'index']);
+    Route::get('/subjects',[SubjectController::class, 'index']);
+    Route::get('/instances',[InstanceController::class, 'index']);
+    Route::get('/schedules',[ScheduleController::class, 'index']);
+
 
     Route::get('/users', function () {
         $users = User::all();
         return view('users', compact('users'));
     });
+    
 });
 
 

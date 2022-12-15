@@ -40,7 +40,7 @@
         $('.dropdown').dropdown();
 
         function reload() {
-            location.reload();
+        //    location.reload();
         }
 
 

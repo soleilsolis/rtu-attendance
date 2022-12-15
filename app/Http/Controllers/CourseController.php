@@ -55,7 +55,7 @@ class CourseController extends Controller
     {
         $course = $course->find($request->id);
 
-        return response()->json($course); 
+        return view('course', compact('course')); 
     }
 
     /**

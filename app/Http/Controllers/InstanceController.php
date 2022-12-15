@@ -16,7 +16,8 @@ class InstanceController extends Controller
      */
     public function index()
     {
-        return response()->json(Instance::all());
+        $instances = Instance::all();
+        return view('instances', compact('instances'));
     }
 
     /**
@@ -39,7 +40,7 @@ class InstanceController extends Controller
     {
         $instance = Instance::create([
             'user_id' => $request->user_id,
-            'instance_id' => $request->instance_id,
+            'subject_id' => $request->subject_id,
             'active' => $request->active,
         ]);
 
@@ -56,7 +57,8 @@ class InstanceController extends Controller
     {
         $instance = $instance->find($request->id);
 
-        return response()->json($instance); 
+        return view('instance', compact('instance')); 
+
     }
 
     /**

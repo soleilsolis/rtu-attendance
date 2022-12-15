@@ -6,11 +6,11 @@
 
     <div class="ui secondary menu">
         <div class="right menu">
-            <div href="" class="item">
-
-                <form class="ui large form submit-form" data-method="POST" data-action="/users" data-callback="reload">
-                    
-                </form>
+            <div class="item">
+                <button class="ui blue button" onclick="$('#attendance-modal').modal('show')">
+                    <i class="plus icon"></i>
+                    New
+                </button>
             </div>
         </div>
     </div>
@@ -20,7 +20,6 @@
             <th class="collapsing">#</th>
             <th>Name</th>
             <th class="right aligned">Section</th>
-
         </thead>
 
         <tbody>
@@ -33,11 +32,10 @@
             @endforeach
         </tbody>
     </table>
-    <div id="attendance-modal" class="ui basic mini modal">
+    <div id="attendance-modal" class="ui basic small modal">
         <div class="bg-white shadow-md p-6 rounded-md overflow-auto">
-            <h1 id="attendance-label" class="mb-10 text-black text-3xl font-bold">Attend today's schedules?</h1>
+            <h1 id="attendance-label" class="mb-10 text-black text-3xl font-bold">New User</h1>
             <x-forms.register></x-forms.register>
-
 
         </div>
     </div>

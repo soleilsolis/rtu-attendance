@@ -15,19 +15,17 @@
     </div>
     <table class="ui selectable stackable table">
         <thead>
-            <th>#</th>
+            <th class="collapsing">#</th>
             <th>Name</th>
-            <th>Course</th>
             <th class="right aligned">Date</th>
         </thead>
 
         <tbody>
-            @foreach ($sections as $section)
-                <tr onclick="location.href='/section/{{ $section->id }}'">
-                    <td>{{ $section->id }}</td>
-                    <td>{{ $section->name }}</td>
-                    <td>{{ $section->course->name }}</td> 
-                    <td class="right aligned">{{ $section->created_at }}</td>
+            @foreach ($schedules as $schedule)
+                <tr onclick="location.href='/schedule/{{ $schedule->id }}'">
+                    <td class="collapsing">{{ $schedule->id }}</td>
+                    <td>{{ $schedule->name }}</td>
+                    <td class="right aligned">{{ $schedule->created_at }}</td>
                 </tr>
             @endforeach
 
@@ -36,17 +34,12 @@
 
     <div id="attendance-modal" class="ui basic small modal">
         <div class="bg-white shadow-md p-6 rounded-md overflow-auto">
-            <h1 id="attendance-label" class="mb-10 text-black text-3xl font-bold">New Section</h1>
-            <form class="ui large form submit-form" data-method="POST" data-action="/sections" data-callback="reload">
+            <h1 id="attendance-label" class="mb-10 text-black text-3xl font-bold">New Subject</h1>
+            <form class="ui large form submit-form" data-method="POST" data-action="/schedules" data-callback="reload">
                 @csrf
 
 
                 <x-field id="name" name="name" type="text" label="Name"></x-field>
-                <x-field label="Select Course" type="dropdown" name="course_id" id="course_id">
-                    @foreach (\App\Models\Course::all() as $course)
-                        <option value="{{ $course->id }}">{{ $course->name }}</option>
-                    @endforeach
-                </x-field>
 
                 <button class="ui big blue button mt-12" type="submit">Save</button>
             </form>

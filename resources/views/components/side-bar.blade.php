@@ -35,9 +35,20 @@
             </span>
         </a>
     
-        <a href="/classes" class="item m-3">
+        <a href="/sections" class="item m-3">
             <span class="text-2xl ">
                 Sections/Classes
+            </span>
+        </a>
+        <a href="/subjects" class="item m-3">
+            <span class="text-2xl ">
+                Subjects
+            </span>
+        </a>
+
+        <a href="/instances" class="item m-3">
+            <span class="text-2xl ">
+                Instances
             </span>
         </a>
 
@@ -46,6 +57,10 @@
                 Schedules
             </span>
         </a>
+
+       
+
+        
 
         <a href="/users" class="item m-3">
             <span class="text-2xl ">

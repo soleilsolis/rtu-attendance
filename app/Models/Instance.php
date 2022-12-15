@@ -9,7 +9,7 @@ class Instance extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'subject_id'];
+    protected $fillable = ['user_id', 'subject_id', 'active'];
 
     public function user()
     {

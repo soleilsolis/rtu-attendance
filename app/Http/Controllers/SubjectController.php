@@ -16,7 +16,9 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        return response()->json(Subject::all());
+        $subjects = Subject::all();
+        
+        return view('subjects', compact('subjects'));
     }
 
     /**
@@ -54,7 +56,8 @@ class SubjectController extends Controller
     {
         $subject = $subject->find($request->id);
 
-        return response()->json($subject); 
+        return view('subject', compact('subject'));
+        
     }
 
     /**

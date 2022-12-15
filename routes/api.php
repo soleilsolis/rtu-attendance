@@ -36,7 +36,7 @@ Route::middleware('auth.session')->group(function(){
         Route::get('/courses', 'index');
         Route::get('/course/{id}', 'show');
         Route::post('/courses', 'store');
-        Route::put('/course/{id}', 'update');
+        Route::post('/course/update', 'update');
     });
 
     Route::controller(AttendanceController::class)->group(function(){
@@ -50,28 +50,28 @@ Route::middleware('auth.session')->group(function(){
         Route::get('/sections', 'index');
         Route::get('/section/{id}', 'show');
         Route::post('/sections', 'store');
-        Route::put('/section/{id}', 'update');
+        Route::post('/section/update', 'update');
     });
 
     Route::controller(SubjectController::class)->group(function(){
         Route::get('/subjects', 'index');
         Route::get('/subject/{id}', 'show');
         Route::post('/subjects', 'store');
-        Route::put('/subject/{id}', 'update');
+        Route::post('/subject/update', 'update');
     });
 
     Route::controller(InstanceController::class)->group(function(){
         Route::get('/instances', 'index');
         Route::get('/instance/{id}', 'show');
         Route::post('/instances', 'store');
-        Route::put('/instance/{id}', 'update');
+        Route::post('/instance/update', 'update');
     });
 
     Route::controller(ScheduleController::class)->group(function(){
         Route::get('/schedules', 'index');
         Route::get('/schedule/{id}', 'show');
         Route::post('/schedules', 'store');
-        Route::put('/schedule/{id}', 'update');
+        Route::post('/schedule/update', 'update');
     });
 
     Route::controller(UserController::class)->group(function(){
